@@ -1,0 +1,278 @@
+<?php
+/*    use Zend\Form\Form;
+    use Zend\Form\Element;
+    use Zend\InputFilter\InputFilter;
+    use Zend\InputFilter\Input;
+
+    $form = new Form();
+
+    $form->add([
+        'type' => 'Zend\Form\Element\Radio',
+        'name' => 'payment_method',
+        'attributes' => [
+            'value' => '1',
+        ],
+        'options' => [
+        'label_attributes' => [
+            'class' =>  'payment-method',
+        ],
+            'value_options' => [
+                '1' => '',//Card
+                '2' => '',//Bank Transfer
+                '3' => '',//PayPal
+            ]
+        ],
+    ]);
+    //echo "<pre>",print_r($_SESSION['Zend_Auth']['session']).'</pre>';
+
+    $submit = new Element\Submit('submit');
+    $submit->setAttribute('class', 'button primary medium expanded large-customer form-control');
+    $submit->setValue('Continue >>');
+
+    $radio = $form->get('payment_method');
+
+    // ...add elements and input filter to form...
+    $form->setAttribute('action', $this->url('payment'));
+    $form->prepare();
+
+    $progress = 0;
+    $mp_action = explode('/',$this->url());
+    $action = (!empty($mp_action[count($mp_action)-1]))?$mp_action[count($mp_action)-1]:'home';
+
+    if(strstr((string)$this->url(),"view-invoice")){
+        $action = 'home';
+    }
+
+    $filter_gender = (int) $_SESSION['Zend_Auth']['session'][0]['filter_gender'];
+    $filter_geo = (int) $_SESSION['Zend_Auth']['session'][0]['exclude'];
+    $business = (string) $_SESSION['Zend_Auth']['session'][0]['desc_short'];
+    $live = strtolower($_SESSION['Zend_Auth']['session'][0]['live']);
+    $credit_bal = $_SESSION['Zend_Auth']['session'][0]['credit_bal'];
+
+    $daily_limit = (!empty($_SESSION['Zend_Auth']['session'][0]['prod_1'])||!empty($_SESSION['Zend_Auth']['session'][0]['prod_2'])||!empty($_SESSION['Zend_Auth']['session'][0]['prod_3'])||
+    !empty($_SESSION['Zend_Auth']['session'][0]['prod_4'])||
+    !empty($_SESSION['Zend_Auth']['session'][0]['prod_5'])||!empty($_SESSION['Zend_Auth']['session'][0]['prod_6'])||!empty($_SESSION['Zend_Auth']['session'][0]['prod_7']))?true:false;
+
+    ($credit_bal > 4) ? $progress += 20 : '' ;
+    ($live !='no') ? $progress += 20 : '' ;
+    (!empty($business)) ? $progress += 20 : '' ;
+    ($daily_limit) ? $progress += 20 : '' ;
+
+    ($filter_gender === 1 || $filter_gender === 2 || $filter_gender === 3) ? $progress += 20 : '' ;
+*/
+ ?>
+ <?= $this->doctype() ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?= $this->headTitle('LeadsWork LTD')->setSeparator(' | ')->setAutoEscape(false) ?>
+
+        <?= $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <!-- Le styles -->
+        <?= $this->headLink(['rel' => 'shortcut icon', 'type' => 'img/icon2.ico', 'href' => $this->basePath() . '/img/icon2.ico'])
+            ->prependStylesheet($this->basePath('css/app-admin.css'))
+            ->prependStylesheet($this->basePath('css/app.css'))
+            ->prependStylesheet($this->basePath('css/jquery.cookiebar.css'))
+            ->prependStylesheet($this->basePath('css/fonts.css'))
+            ->prependStylesheet($this->basePath('css/foundation.custom.css'))
+            ->prependStylesheet($this->basePath('css/topbar-responsive.css'))
+            ->prependStylesheet('//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css')
+            ->prependStylesheet('//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+            ->prependStylesheet('//cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css')
+            ->prependStylesheet($this->basePath('css/calendar/daterangepicker.min.css'))
+            //->prependStylesheet($this->basePath('css/foundation.min.css'))
+        ?>
+    </head>
+    <body class="xxxx">
+        <?= $this->headScript()
+        ->prependFile('//code.jquery.com/ui/1.12.1/jquery-ui.js') // file must be here for map filter Sortable to work
+        ->prependFile($this->basePath('js/app-admin.js'))
+        ->prependFile($this->basePath('js/app.js'))
+
+        ->prependFile($this->basePath('js/jquery.cookiebar.js'))
+        ->prependFile($this->basePath('js/jquery.cookiebar.custom.js'))
+
+        ->prependFile($this->basePath('js/calendar/jquery.daterangepicker.js'))
+        ->prependFile($this->basePath('js/calendar/jquery.daterangepicker.min.js'))
+        ->prependFile($this->basePath('js/calendar/moment.js'))
+
+        //start javascript classes required for foundation plugins
+        ->prependFile($this->basePath('js/foundation.unit/foundation.offcanvas.js'))
+        ->prependFile($this->basePath('js/foundation.unit/foundation.tooltip.js'))
+        ->prependFile($this->basePath('js/foundation.unit/foundation.reveal.js'))
+        ->prependFile($this->basePath('js/foundation.unit/foundation.magellan.js'))
+        ->prependFile($this->basePath('js/foundation.unit/foundation.dropdown.js'))
+        ->prependFile($this->basePath('js/foundation.unit/foundation.dropdownMenu.js'))
+        ->prependFile($this->basePath('js/foundation.unit/foundation.accordion.js'))
+        ->prependFile($this->basePath('js/foundation.unit/foundation.util.triggers.js'))
+        ->prependFile($this->basePath('js/foundation.unit/foundation.util.nest.js'))
+        ->prependFile($this->basePath('js/foundation.unit/foundation.util.motion.js'))
+        ->prependFile($this->basePath('js/foundation.unit/foundation.util.mediaQuery.js'))
+        ->prependFile($this->basePath('js/foundation.unit/foundation.util.keyboard.js'))
+        ->prependFile($this->basePath('js/foundation.unit/foundation.util.box.js'))
+        ->prependFile($this->basePath('js/foundation.unit/foundation.core.js'))
+        ->prependFile($this->basePath('js/foundation.unit/vendor.js'))
+        ->prependFile($this->basePath('js/foundation.min.js'))
+
+
+
+
+        //End javascript classes required for foundation plugins
+
+        ////->prependFile('//cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/plugins/foundation.util.keyboard.min.js')
+        ////->prependFile('//cdn.jsdelivr.net/foundation/6.1.1/js/foundation.accordion.js')
+        ////->prependFile('//cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/plugins/foundation.core.min.js')
+        //////->prependFile('//cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js')
+        ->prependFile('//code.jquery.com/jquery-1.12.4.js')
+        ->prependFile('//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+
+        ?><!-- data-toggle="topbar-center-logo"   custom-menu-wrapper-->
+        <button id="offCanvas-btn" type="button" class="button hidden" data-toggle="offCanvas">Open Right</button>
+    <div class="custom-menu-wrapper off-canvas position-right is-closed" id="offCanvas" data-off-canvas>
+        <div class="close-wrapper"><!-- ./sart closing button section -->
+
+            <div onclick="$('#offCanvas-btn').trigger('click')" class="closing-m menu-icon-wrapper" class="button" data-toggle="offCanvas"><!-- closing numner -->
+                <span class="menu-icon-1"></span>
+                <span class="menu-icon-2"></span>
+                <span class="menu-icon-3"></span>
+            </div>
+        </div><!-- ./end closing button section -->
+        <div class="profile-d-infor">
+            <div class="side-wrapper">
+                <div class="grid-x grid-padding-x float-left">
+                    <div class="small-5 cell">
+                        <span class="profile-progress-wrapper" style="width:7rem">
+                            <svg style="width:100%;height:100px;" >
+                                <text text-anchor="middle" style="font-size: 1.4rem;font-weight: 500;fill: #FFF;font-family: 'leadswork-h-n';" y="60" x="50"><?= $progress ?>%</text>
+                            </svg>
+                        </span>
+
+                        <canvas id="canvas_2" data-canvas-property2 data-circle-percent="<?= $progress ?>" data-speed="20" data-start-from = "20" data-circle-line-thickness = "11" data-circle-size = "1" data-primary-color="#1878ba" data-secondary-color="#ffffff" width="100" height="100" ></canvas>
+                    </div>
+                    <div class="small-7 cell">
+                        <h4>
+                            <span> Account ID <strong><?= $_SESSION['Zend_Auth']['session'][0]['id'] ?></strong></span>
+                        </h4>
+                        <h4>
+                            <span><?=ucwords($_SESSION['Zend_Auth']['session'][0]['contact'])?></span>
+                        </h4>
+                    </div><!--./medium-7-->
+                    <div class="small-12 cell">
+                        <p>
+                            Current Balance: <strong style="font-size: 1.5rem;" class="dashboard-price">£<?=$_SESSION['Zend_Auth']['session'][0]['credit_bal']?></strong>
+                        </p>
+                        <hr>
+
+                    </div>
+                </div><!--./grid-x grid-padding-x-->
+            </div><!--./large-margin-l side-wrapper-->
+        </div>
+    </div>
+
+    <div class="off-canvas-contentxxx">
+        <header>
+            <div class="slideUp profile-menu open">
+                <div class="grid-container">
+                    <div class="grid-x grid-padding-x">
+                        <div class="small-12 medium-12 cell">
+
+                            <!-- mobile nav bar -->
+                            <div class="title-bar topbar-center-logo-mobile" data-responsive-toggle="topbar-center-logo" data-hide-for="medium">
+                                <div class="title-bar-left">
+                                    <div class="title-bar-title"><a href="#"><img src="<?= $this->basePath('img/') ?>logo.png" alt="Logo" /></a></div>
+                                </div>
+                                <div class="title-bar-right"><!-- mobile onle -->
+                                    <div class="menu-icon-wrapper" data-toggle="topbar-center-logo">
+                                        <span class="menu-icon-1"></span>
+                                        <span class="menu-icon-2"></span>
+                                        <span class="menu-icon-3"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /mobile nav bar -->
+
+
+                            <!-- medium and larger nav bar -->
+                            <div class="top-bar topbar-center-logo" id="topbar-center-logo">
+                                <div class="top-bar-center">
+                                    <a class="inline-block" href="#"><img src="<?= $this->basePath('img/') ?>logo.png" alt="Logo" width=180 /></a>
+                                </div>
+                            </div>
+                            <!-- /medium and larger nav bar -->
+                        </div>
+                    </div>
+                </div><!-- ./grid-container -->
+            </div>
+        </header>
+        <?php
+    //session_start();
+    //unset($_SESSION);
+    //echo $_SESSION['Zend\Session\Validator\Id'];
+    //echo "<pre>",print_r($_SESSION)."</pre>";
+
+        ?>
+        <?= $this->content ?>
+
+
+
+        <!--<?= $this->inlineScript() ?>-->
+        <div class="tiny reveal form-wrapper" id="choose-payment-method" data-reveal>
+            <h1 class="text-primary">Choose your payment method.</h1>
+
+            <?= $this->form()->openTag($form) ?>
+                <div class="grid-x grid-padding-x">
+                    <div class="medium-12 position-r form-group cell">
+                        <?= $this->formElement($radio) ?>
+
+                        <!--<span class="floating-label"><i class="fa fa-user" aria-hidden="true"></i></span>-->
+
+                        <?= $this->formElementErrors()->render($radio, ['class' => 'help-block'])  ?>
+                    </div>
+                    <div class="medium-12 cell">
+                        <?= $this->formElement($submit) ?>
+                    </div>
+                </div>
+            <?= $this->form()->closeTag() ?>
+
+            <button class="close-button" data-close aria-label="Close modal" type="button">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+
+        <button id="show-massage-btn" class="button primary hidden" data-open="show-massage" aria-controls="show-massage" aria-haspopup="true" tabindex="0">Load Cover</button>
+
+        <div class="reveal form-wrapper" id="show-massage" data-reveal>
+            <h1 class="text-primary" id="message-title"></h1>
+            <span id="message-body">
+
+            </span>
+            <button class="close-button" data-close aria-label="Close modal" type="button">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <button id="loading-cover-btn" class="button primary hidden" data-open="loading-cover" aria-controls="loading-cover" aria-haspopup="true" tabindex="0">Load Cover</button>
+
+        <div class="map-place-holder" id="loading-cover" data-reveal>
+            <div><i class="fa fa-spinner loading active" aria-hidden="true"></i></div>
+            <button id="loading-cover-close-btn" class="close-button hidden" data-close aria-label="Close modal" type="button">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <!--<div class="init-cover hidden"></div>-->
+
+        <script type="text/javascript">
+        $(function(){
+            CanvasController('canvas_2','data-canvas-property2');
+        });
+        </script>
+    </div>
+    </body>
+</html>

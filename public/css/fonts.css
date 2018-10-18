@@ -1,0 +1,23 @@
+@font-face { /* weight 400 */
+	font-family: "leadswork-h-n";
+	src: url('../fonts/leadswork-helvetica-neue.ttf');
+}
+@font-face { /* weight 500 */
+	font-family: "leadswork-h-c";
+	src: url('../fonts/leadswork-helvetica-cyrillic.ttf');
+}
+
+@font-face { /* weight 600 */
+	font-family: "leadswork-h-b";
+	src: url('../fonts/leadswork-helvetica-helvetica-bold.otf');
+}
+
+@font-face { /* wright 300 */
+	font-family: "leadswork-h-l";
+	src: url('../fonts/leadswork-helvetica-light.otf');
+}
+
+@font-face {
+	font-family: "leadswork-f";
+	src: url('../fonts/leadswork-futura.ttf');
+}

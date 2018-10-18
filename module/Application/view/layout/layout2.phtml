@@ -1,0 +1,67 @@
+<?= $this->doctype() ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?= $this->headTitle('LeadsWork')->setSeparator(' | ')->setAutoEscape(false) ?>
+
+        <?= $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <!-- Le styles -->
+        <?= $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/icon2.ico'])
+            ->prependStylesheet($this->basePath('css/app.css'))
+            ->prependStylesheet($this->basePath('css/fonts.css'))
+            ->prependStylesheet($this->basePath('css/foundation.custom.css'))
+            ->prependStylesheet($this->basePath('css/topbar-responsive.css'))
+            ->prependStylesheet('//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css')
+            ->prependStylesheet('//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css')
+            ->prependStylesheet('//cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css')
+            //->prependStylesheet($this->basePath('css/foundation.min.css'))
+        ?>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113167552-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-113167552-1');
+        </script>
+    </head>
+    <body>
+        <!-- Scripts -->
+        <?= $this->headScript()
+        ->prependFile($this->basePath('js/what-input.js'))
+        ->prependFile($this->basePath('js/app.js'))
+        //->prependFile($this->basePath('js/sup-topbar.min.js')) // Scripts to show top bar on scroll
+        ->prependFile('//cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/plugins/foundation.dropdown.min.js')
+        ->prependFile('//cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/plugins/foundation.util.keyboard.min.js')
+        ->prependFile('//cdn.jsdelivr.net/foundation/6.1.1/js/foundation.accordion.js')
+        ->prependFile('//cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/plugins/foundation.core.min.js')
+        ->prependFile('//cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js')
+        //->prependFile($this->basePath('js/foundation.min.js'))
+        ->prependFile('//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js')
+        ->prependFile('//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js') // we are using jquery 2.1.4 to support sup-topbar.min.js. 3.2.1 does not support topbar
+        ?>
+    <header class="join-logo text-center">
+        <a href="<?= $this->url('home'); ?>"><img src="<?= $this->basePath('img/') ?>logo.png" alt="Leads work Logo" /></a>
+    </header>
+    <?= $this->content ?>
+    <footer class="footer text-center">
+        <div class="join-footer-wrapper">
+            <div class="grid-container">
+                <div class="grid-x grid-padding-x">
+                    <div class="medium-6 large-4 medium-offset-3 large-offset-4 cell">
+                        <p class="small">
+                            &#169; <?= date('Y') ?> LeadsWork. All Rights Reserved. <a href="<?= $this->url('privacy-policy'); ?>" title="Privacy Policy" target="_blank">Privacy Policy</a> | <a href="<?= $this->url('terms'); ?>" title="Terms" target="_blank">Terms</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    </body>
+</html>

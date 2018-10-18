@@ -1,0 +1,123 @@
+<?php
+/*
+    Form for Stay Informed
+
+    Get the latest from LeadsWork
+
+    **** No longer needed ****
+
+
+    use Zend\Form\Form;
+    use Zend\Form\Element;
+    use Zend\InputFilter\InputFilter;
+    use Zend\InputFilter\Input;
+
+
+    use Zend\Filter\StringTrim;
+    use Zend\Filter\StripTags;
+    use Zend\Filter\ToInt;
+    use Zend\InputFilter\InputFilterAwareInterface;
+    use Zend\InputFilter\InputFilterInterface;
+    use Zend\Validator\StringLength;
+
+    // Start preparing 'Stay Informed' form
+
+    $name = new Element\Text('name');
+    $name->setAttribute('class', 'form-control capitalize large input-text');
+    $name->setAttribute('required', 'true');
+
+    $phone = new Element\Number('phone');
+    $phone->setAttribute('class', 'form-control large input-text');
+    $phone->setAttribute('min', '0');
+    $phone->setAttribute('required', 'true');
+
+    $email = new Element\Text('email');
+    $email->setAttribute('class', 'form-control large input-text');
+    $email->setAttribute('required', 'true');
+
+    //$this->serverUrl();
+    $controller = new Element\Hidden('ctr');
+    $action = new Element\Hidden('acn');
+
+
+    $submit = new Element\Submit('submit');
+    $submit->setAttribute('class', 'button primary medium expanded large-customer form-control');
+    $submit->setValue('Subscribe');
+
+    $form = new Form();
+    // ...add elements and input filter to form...
+    $form->setAttribute('action', $this->url('subscription-notice'));
+    $form->prepare();
+*/
+    // Stop preparing 'Stay Informed' form
+
+ ?>
+<?= $this->doctype() ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="_globalsign-domain-verification" content="ZTZsGoD8llasO8v1oLnWgoKiJOG1lzdTwLcRU-65-t" />
+        <?= $this->headTitle('Changes to Your Life')->setSeparator(' | ')->setAutoEscape(false) ?>
+
+        <?= $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <!-- Le styles -->
+        <?= $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/icon.ico'])
+            ->prependStylesheet($this->basePath('css/app.css'))
+            ->prependStylesheet($this->basePath('css/jquery.cookiebar.css'))
+            ->prependStylesheet($this->basePath('css/fonts.css'))
+            ->prependStylesheet($this->basePath('css/foundation.custom.css'))
+            ->prependStylesheet($this->basePath('css/topbar-responsive.css'))
+            //->prependStylesheet('//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css')
+            ->prependStylesheet('//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css')
+            ->prependStylesheet('//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css')
+            ->prependStylesheet('//cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css')
+            //->prependStylesheet($this->basePath('css/foundation.min.css'))
+        ?>
+    </head>
+    <body>
+
+    <?= $this->content ?>
+    <footer class="footer">
+
+    </footer>
+    <?= $this->headScript()
+
+    ->prependFile($this->basePath('js/app.2.0.js'))
+
+    ->prependFile($this->basePath('js/jquery.cookiebar.js'))
+    ->prependFile($this->basePath('js/jquery.cookiebar.custom.js'))
+
+    //->prependFile('//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js')
+
+    //start javascript classes required for foundation plugins
+    ->prependFile($this->basePath('js/foundation.unit/foundation.magellan.js'))
+    ->prependFile($this->basePath('js/foundation.unit/foundation.dropdownMenu.js'))
+    ->prependFile($this->basePath('js/foundation.unit/foundation.sticky.js'))
+    ->prependFile($this->basePath('js/foundation.unit/foundation.accordion.js'))
+    ->prependFile($this->basePath('js/foundation.unit/foundation.util.triggers.js'))
+    ->prependFile($this->basePath('js/foundation.unit/foundation.util.nest.js'))
+    ->prependFile($this->basePath('js/foundation.unit/foundation.util.keyboard.js'))
+    ->prependFile($this->basePath('js/foundation.unit/foundation.util.mediaQuery.js'))
+    ->prependFile($this->basePath('js/foundation.unit/foundation.util.box.js'))
+    ->prependFile($this->basePath('js/foundation.unit/foundation.core.js'))
+    ->prependFile($this->basePath('js/foundation.unit/vendor.js'))
+    ->prependFile($this->basePath('js/foundation.min.js'))
+    //End javascript classes required for foundation plugins
+
+    ////->prependFile('//cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/plugins/foundation.util.keyboard.min.js')
+    ////->prependFile('//cdn.jsdelivr.net/foundation/6.1.1/js/foundation.accordion.js')
+    ////->prependFile('//cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/plugins/foundation.core.min.js')
+    //////->prependFile('//cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js')
+
+
+    ->prependFile('//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js')
+    ->prependFile('//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js') // we are using jquery 2.1.4 to support sup-topbar.min.js. 3.2.1 does not support topbar
+    ?>
+    <!--<?= $this->inlineScript() ?>-->
+    </body>
+</html>

@@ -1,0 +1,116 @@
+.topbar-center-logo {
+  background-color: #FFF;
+}
+
+.topbar-center-logo .menu {
+  background-color: #FFF;
+}
+.menu-setting{
+
+}
+.header-contact-info a{
+    padding: 1rem 0rem 0rem 2rem !important;
+    float: right;
+}
+.topbar-center-logo .menu a {
+    font-size: 1rem;
+    color: #666;
+    padding-right: 0;
+}
+.topbar-center-logo .menu a:hover {
+    color: #1EA0F2;
+}
+header .dropdown .is-dropdown-submenu a{
+    padding: .2rem 1rem;
+}
+.topbar-center-logo .top-bar-center {
+  -webkit-flex: 1 0 auto;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
+}
+.badge{
+    font-size: .8rem;
+}
+.slideUp{
+    position: fixed;
+    z-index: 99;
+    top: -2.4rem;
+    background-color: #FFF;
+    color: #1EA0F2;
+    width: 100%;
+    -webkit-transition: top .4s ease-in-out;
+    -moz-transition: top .4s ease-in-out;
+    transition: top .4s ease-in-out;
+    box-shadow: 0 0 .1rem #C9C9C9;
+}
+.slideUp.open{
+    top: 0rem;
+}
+.topbar-center-logo-mobile {
+  background: #FFF;
+}
+
+.topbar-center-logo-mobile .menu-icon {
+  vertical-align: text-top;
+  background-color: #1EA0F2;
+}
+.menu-icon-wrapper{
+    width: 1.77rem;
+    float: right;
+    cursor: pointer;
+}
+.menu-icon-1,.menu-icon-2,.menu-icon-3{
+    background: #09afdf;
+    display: block;
+    position: relative;
+    height: 3px; /* units must be px, rem not supported */
+    margin-bottom: .36rem;
+    -webkit-transition: all .15s ease-in-out;
+     -moz-transition: all .15s ease-in-out;
+     transition: all .15s ease-in-out;
+}
+.menu-setting .menu-icon-1{
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    top: 0.2rem;
+    position: relative;
+}
+.menu-setting .menu-icon-3{
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    top: -0.28rem;
+}
+.menu-setting .menu-icon-2{
+    display: none;
+}
+/* Small only */
+@media screen and (max-width: 39.9375em) {
+    .header-contact-info{
+        margin-bottom: 1rem;
+    }
+    .topbar-center-logo .top-bar-center {
+      display: none;
+    }
+    .menu .button, .menu .last-iniline-child {
+        padding: 0.6rem 1rem;
+        margin-top: 0.2rem;
+        font-weight: 600;
+    }
+    .slideUp{
+        top: -5rem;
+    }
+}
+
+/* Medium and up */
+@media screen and (min-width: 40em) {}
+
+/* Medium only */
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {}
+
+/* Large and up */
+@media screen and (min-width: 64em) {}
+
+/* Large only */
+@media screen and (min-width: 64em) and (max-width: 74.9375em) {}
